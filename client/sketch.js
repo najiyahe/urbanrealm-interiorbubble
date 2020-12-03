@@ -41,10 +41,9 @@ let pose;
 function setup() {
   
   createCanvas(windowWidth, windowHeight);
-  colorMode(HSB);
 
   // initiate particle system
-  ps = new ParticleSystem(createVector(width/2, 50));
+  ps = new ParticleSystem(createVector(width/2, height/2));
 
   //ml5 video
   video = createCapture(VIDEO);
@@ -59,7 +58,7 @@ function draw() {
    image(video,0,0);
    tint(25,20,15,30);
    filter(GRAY);
-  
+   
     //colors for posenet motion
     fill(255, 64);
     stroke(5);
@@ -78,13 +77,31 @@ function draw() {
   ps.origin.set(pose.rightWrist.x, (pose.rightWrist.y-100), 0);
   ps.addParticle();
   ps.run();
- 
-}
-}
-/////////// P5JS Sketch ///////////
 
-function mouseDragged() {
-  const newX = constrain(mouseX / width, 0, 1);
-  const newY = constrain(mouseY / height, 0, 1);
-  socket.send({ address: '/3/xy', args: [newX, newY] })
+  // mapParticles();
 }
+
+}
+
+// ///////////////////////////////////////////////////////////////////////////////////////////
+
+  
+    //  // Map to arduino
+    //  function mapParticles(){
+    //   //Mapped x position on LED strip = 0 to 60 leds 
+    //   //y position defines hue
+    //   const newX = map (this.position.x, 0, width, 0, 60, true);
+    //   const newY = map (this.position.y, 0, height, 0,1, true);
+    //   socket.send({ address: '/3/xy', args: [newX, newY] })
+    // }
+
+// ///////////////////////////////////////////////////////////////////////////////////////////
+
+    // function mouseDragged() {
+      //   // const newX = constrain(mouseX / width, 0, 1);
+      //   // const newY = constrain(mouseY / height, 0, 1);
+      //   socket.send({ address: '/3/xy', args: [newX, newY] })
+      // }
+
+
+

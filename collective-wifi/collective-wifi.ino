@@ -60,6 +60,7 @@ int lastButtonState = -1;
 float lastX = -1.0;
 float lastY = -1.0;
 
+///////////////////////////////////////////////////////////P5 to arduino////////////////////////////////////////
 
 void onXy(OSCMessage& msg) {
   float x = msg.getFloat(0);
@@ -71,6 +72,8 @@ void onXy(OSCMessage& msg) {
 
   leds[whichLed].setHue(newHue);
 }
+///////////////////////////////////////////////////////////P5 to arduino////////////////////////////////////////
+
 
 void onToggle(OSCMessage& msg) {
   // Reset everything to red when the button is pressed
