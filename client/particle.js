@@ -35,7 +35,24 @@ class Particle {
     noStroke();
     fill(hueMap, 80, 80, this.lifespan);
     ellipse(this.position.x, this.position.y, 30, 30);
+
+    // console.log(this.position.x, this.position.y);
+
   }
+
+//   // ///////////////////////////////////////////////////////////////////////////////////////////
+
+// mapParticles();
+// // Map to arduino
+// mapParticles(){
+//  //Mapped x position on LED strip = 0 to 60 leds 
+//  //y position defines hue
+//  const newX = map (this.position.x, 0, width, 0, 1, true);
+//  const newY = map (this.position.y, 0, height, 0, 1, true);
+//   // socket.send({ address: '/3/xy', args: [newX, newY] })
+// }
+
+// // ///////////////////////////////////////////////////////////////////////////////////////////
 
   // Is the particle still useful?
   isDead() {

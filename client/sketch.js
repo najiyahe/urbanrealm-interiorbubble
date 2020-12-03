@@ -78,25 +78,28 @@ function draw() {
   ps.origin.set(pose.rightWrist.x, (pose.rightWrist.y-100), 0);
   ps.addParticle();
   ps.run();
+  mapParticles(pose);
+
 
 }
 
-mapParticles();
 }
 
-// ///////////////////////////////////////////////////////////////////////////////////////////
+  // ///////////////////////////////////////////////////////////////////////////////////////////
+ 
+// Map to arduino
+function mapParticles(pose){
+ //Mapped x position on LED strip = 0 to 60 leds 
+ //y position defines hue
+ const newX = map (pose.rightWrist.x, 0, width, 0, 1, true);
+ const newY = map (pose.rightWrist.y, 0, height, 0, 1, true);
+//  const newX = map (pose.leftWrist.x, 0, width, 0, 1, true);
+//  const newY = map (pose.leftWrist.y, 0, height, 0, 1, true);
+  socket.send({ address: '/3/xy', args: [newX, newY] })
+  // socket.send({ address: '/3/xy', args: [newX, newY] })
+}
 
-  
-     // Map to arduino
-     function mapParticles(){
-      //Mapped x position on LED strip = 0 to 60 leds 
-      //y position defines hue
-      const newX = map (this.position.x, 0, width, 0, 1, true);
-      const newY = map (this.position.y, 0, height, 0, 1, true);
-      socket.send({ address: '/3/xy', args: [newX, newY] })
-    }
-
-// ///////////////////////////////////////////////////////////////////////////////////////////
+// // ///////////////////////////////////////////////////////////////////////////////////////////
 
     // function mouseDragged() {
       //   // const newX = constrain(mouseX / width, 0, 1);
