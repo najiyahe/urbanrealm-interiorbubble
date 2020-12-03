@@ -41,6 +41,7 @@ let pose;
 function setup() {
   
   createCanvas(windowWidth, windowHeight);
+  colorMode(HSB);
 
   // initiate particle system
   ps = new ParticleSystem(createVector(width/2, height/2));
@@ -78,22 +79,22 @@ function draw() {
   ps.addParticle();
   ps.run();
 
-  // mapParticles();
 }
 
+mapParticles();
 }
 
 // ///////////////////////////////////////////////////////////////////////////////////////////
 
   
-    //  // Map to arduino
-    //  function mapParticles(){
-    //   //Mapped x position on LED strip = 0 to 60 leds 
-    //   //y position defines hue
-    //   const newX = map (this.position.x, 0, width, 0, 60, true);
-    //   const newY = map (this.position.y, 0, height, 0,1, true);
-    //   socket.send({ address: '/3/xy', args: [newX, newY] })
-    // }
+     // Map to arduino
+     function mapParticles(){
+      //Mapped x position on LED strip = 0 to 60 leds 
+      //y position defines hue
+      const newX = map (this.position.x, 0, width, 0, 1, true);
+      const newY = map (this.position.y, 0, height, 0, 1, true);
+      socket.send({ address: '/3/xy', args: [newX, newY] })
+    }
 
 // ///////////////////////////////////////////////////////////////////////////////////////////
 
