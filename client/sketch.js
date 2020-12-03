@@ -78,9 +78,9 @@ function draw() {
   ps.origin.set(pose.rightWrist.x, (pose.rightWrist.y-100), 0);
   ps.addParticle();
   ps.run();
+
+  // Map location of particles via OSC to Arduino
   mapParticles(pose);
-
-
 }
 
 }
@@ -89,14 +89,13 @@ function draw() {
  
 // Map to arduino
 function mapParticles(pose){
- //Mapped x position on LED strip = 0 to 60 leds 
- //y position defines hue
+
  const newrightX = map (pose.rightWrist.x, 0, width, 0, 1, true);
  const newrightY = map (pose.rightWrist.y, 0, height, 0, 1, true);
-//  const newleftX = map (pose.leftWrist.x, 0, width, 0, 1, true);
-//  const newleftY = map (pose.leftWrist.y, 0, height, 0, 1, true);
+ const newleftX = map (pose.leftWrist.x, 0, width, 0, 1, true);
+ const newleftY = map (pose.leftWrist.y, 0, height, 0, 1, true);
   socket.send({ address: 'right', args: [newrightX, newrightY] })
-  // socket.send({ address: 'left', args: [newleftX, newleftY] })
+  socket.send({ address: 'left', args: [newleftX, newleftY] })
 }
 
 // // ///////////////////////////////////////////////////////////////////////////////////////////

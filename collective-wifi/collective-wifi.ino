@@ -60,7 +60,7 @@ int lastButtonState = -1;
 float lastX = -1.0;
 float lastY = -1.0;
 
-///////////////////////////////////////////////////////////P5 to arduino////////////////////////////////////////
+///////////////////////////////////////////////////////////Sketch to  OSC to arduino////////////////////////////////////////
 
 void onRight(OSCMessage& msg) {
   float x = msg.getFloat(0);
@@ -73,19 +73,18 @@ void onRight(OSCMessage& msg) {
   leds[whichLed].setHue(newHue);
 }
 
-// void onLeft(OSCMessage& msg) {
-//   float x = msg.getFloat(0);
-//   float y = msg.getFloat(1);
+void onLeft(OSCMessage& msg) {
+  float x = msg.getFloat(0);
+  float y = msg.getFloat(1);
 
-//   // Left X will change position, Left Y will change hue
-//     int whichLed = round(x * (NUM_LEDS -1));
-//  // int whichLed = round(x * ((NUM_LEDS/2 -1))+30;
-//   int newHue = round(y * 255);
+  // Left X will change position, Left Y will change hue
+    int whichLed = round(x * (NUM_LEDS -1));
+ // int whichLed = round(x * ((NUM_LEDS/2 -1))+30;
+  int newHue = round(y * 255);
 
-//   leds[whichLed].setHue(newHue);
-// }
-
-///////////////////////////////////////////////////////////P5 to arduino////////////////////////////////////////
+  leds[whichLed].setHue(newHue);
+}
+///////////////////////////////////////////////////////////Sketch to  OSC to arduino////////////////////////////////////////
 
 
 void onToggle(OSCMessage& msg) {
@@ -114,10 +113,13 @@ void onMessageCallback(WebsocketsMessage message) {
   Serial.println();
 
   /////////ADDRESS FROM SKETCH TO ARDUINO ////////////
+
   oscMessage.dispatch("right", onRight);
-//  oscMessage.dispatch("left", onLeft);
-  // oscMessage.dispatch("/3/toggle1", onToggle);
+  oscMessage.dispatch("left", onLeft);
+
 //You can handle more addresses here if you like!
+  // oscMessage.dispatch("/3/toggle1", onToggle);
+
 }
   /////////ADDRESS FROM SKETCH TO ARDUINO ////////////
 

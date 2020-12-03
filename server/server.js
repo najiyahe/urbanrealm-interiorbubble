@@ -10,10 +10,10 @@ const server = app.listen(WEB_SERVER_PORT, () => {
   console.log('Web server listening on port', WEB_SERVER_PORT);
 });
 
-// ///////////////////////////////////////////////////////
-// // Expose the local public folder, which should contain all your client-side code
-// app.use(express.static('client'));
-// ///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+// Expose the local public folder, which should contain all your client-side code
+app.use(express.static('client'));
+///////////////////////////////////////////////////////
 
 // Create a WebSocket server
 const wss = new WebSocket.Server({ server: server });
