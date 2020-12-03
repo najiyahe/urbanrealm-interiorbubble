@@ -67,23 +67,23 @@ void onRight(OSCMessage& msg) {
   float y = msg.getFloat(1);
 
   // Right X will change position, Right Y will change hue
-  int whichLed = round(x * (NUM_LEDS/2 -1));
+  int whichLed = round(x * (NUM_LEDS -1));
   int newHue = round(y * 255);
 
   leds[whichLed].setHue(newHue);
 }
 
-void onLeft(OSCMessage& msg) {
-  float x = msg.getFloat(0);
-  float y = msg.getFloat(1);
+// void onLeft(OSCMessage& msg) {
+//   float x = msg.getFloat(0);
+//   float y = msg.getFloat(1);
 
 //   // Left X will change position, Left Y will change hue
-//   int whichLed = round(x * ((NUM_LEDS/2 -1)+30));
+//     int whichLed = round(x * (NUM_LEDS -1));
+//  // int whichLed = round(x * ((NUM_LEDS/2 -1))+30;
 //   int newHue = round(y * 255);
 
 //   leds[whichLed].setHue(newHue);
-}
-
+// }
 
 ///////////////////////////////////////////////////////////P5 to arduino////////////////////////////////////////
 
@@ -115,10 +115,11 @@ void onMessageCallback(WebsocketsMessage message) {
 
   /////////ADDRESS FROM SKETCH TO ARDUINO ////////////
   oscMessage.dispatch("right", onRight);
- oscMessage.dispatch("left", onLeft);
+//  oscMessage.dispatch("left", onLeft);
   // oscMessage.dispatch("/3/toggle1", onToggle);
 //You can handle more addresses here if you like!
 }
+  /////////ADDRESS FROM SKETCH TO ARDUINO ////////////
 
 void setup() {
   pinMode(X_PIN, INPUT);
