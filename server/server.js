@@ -11,8 +11,8 @@ const server = app.listen(WEB_SERVER_PORT, () => {
 });
 
 ///////////////////////////////////////////////////////
-// Expose the local public folder, which should contain all your client-side code
-app.use(express.static('client'));
+// // Expose the local public folder, which should contain all your client-side code
+// app.use(express.static('client'));
 ///////////////////////////////////////////////////////
 
 // Create a WebSocket server

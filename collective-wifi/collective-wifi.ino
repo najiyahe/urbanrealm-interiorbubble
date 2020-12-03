@@ -73,17 +73,17 @@ void onRight(OSCMessage& msg) {
   leds[whichLed].setHue(newHue);
 }
 
-void onLeft(OSCMessage& msg) {
-  float x = msg.getFloat(0);
-  float y = msg.getFloat(1);
+// void onLeft(OSCMessage& msg) {
+//   float x = msg.getFloat(0);
+//   float y = msg.getFloat(1);
 
-  // Left X will change position, Left Y will change hue
-    int whichLed = round(x * (NUM_LEDS -1));
- // int whichLed = round(x * ((NUM_LEDS/2 -1))+30;
-  int newHue = round(y * 255);
+//   // Left X will change position, Left Y will change hue
+//     int whichLed = round(x * (NUM_LEDS -1));
+//  // int whichLed = round(x * ((NUM_LEDS/2 -1))+30;
+//   int newHue = round(y * 255);
 
-  leds[whichLed].setHue(newHue);
-}
+//   leds[whichLed].setHue(newHue);
+// }
 ///////////////////////////////////////////////////////////Sketch to  OSC to arduino////////////////////////////////////////
 
 
@@ -115,7 +115,7 @@ void onMessageCallback(WebsocketsMessage message) {
   /////////ADDRESS FROM SKETCH TO ARDUINO ////////////
 
   oscMessage.dispatch("right", onRight);
-  oscMessage.dispatch("left", onLeft);
+  // oscMessage.dispatch("left", onLeft);
 
 //You can handle more addresses here if you like!
   // oscMessage.dispatch("/3/toggle1", onToggle);
