@@ -91,12 +91,12 @@ function draw() {
 function mapParticles(pose){
  //Mapped x position on LED strip = 0 to 60 leds 
  //y position defines hue
- const newX = map (pose.rightWrist.x, 0, width, 0, 1, true);
- const newY = map (pose.rightWrist.y, 0, height, 0, 1, true);
-//  const newX = map (pose.leftWrist.x, 0, width, 0, 1, true);
-//  const newY = map (pose.leftWrist.y, 0, height, 0, 1, true);
-  socket.send({ address: '/3/xy', args: [newX, newY] })
-  // socket.send({ address: '/3/xy', args: [newX, newY] })
+ const newrightX = map (pose.rightWrist.x, 0, width, 0, 1, true);
+ const newrightY = map (pose.rightWrist.y, 0, height, 0, 1, true);
+//  const newleftX = map (pose.leftWrist.x, 0, width, 0, 1, true);
+//  const newleftY = map (pose.leftWrist.y, 0, height, 0, 1, true);
+  socket.send({ address: 'right', args: [newrightX, newrightY] })
+  // socket.send({ address: 'left', args: [newleftX, newleftY] })
 }
 
 // // ///////////////////////////////////////////////////////////////////////////////////////////
