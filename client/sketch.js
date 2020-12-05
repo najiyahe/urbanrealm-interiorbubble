@@ -85,21 +85,21 @@ function draw() {
 
 }
 
-  // ///////////////////////////////////////////////////////////////////////////////////////////
+  // /////////////////////// Map to OSC//////////////////////////////////////////////////////////////////////
  
-// Map to arduino
+
 function mapParticles(pose){
 
  const newrightX = map (pose.rightWrist.x, 0, width, 0, 1, true);
  const newrightY = map (pose.rightWrist.y, 0, height, 0, 1, true);
-//  const newleftX = map (pose.leftWrist.x, 0, width, 0, 1, true);
-//  const newleftY = map (pose.leftWrist.y, 0, height, 0, 1, true);
+ const newleftX = map (pose.leftWrist.x, 0, width, 0, 1, true);
+ const newleftY = map (pose.leftWrist.y, 0, height, 0, 1, true);
 
-  socket.send({ address: 'right', args: [newrightX, newrightY] })
-  // socket.send({ address: 'left', args: [newleftX, newleftY] })
+  socket.send({ address: '/3/xy', args: [newrightX, newrightY] })
+  socket.send({ address: '/3/toggle1', args: [newleftX, newleftY] })
 }
 
-// // ///////////////////////////////////////////////////////////////////////////////////////////
+// // //////////////////////// Map to OSC/////////////////////////////////////////////////////////////////////
 
     // function mouseDragged() {
       //   // const newX = constrain(mouseX / width, 0, 1);
