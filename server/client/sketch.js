@@ -38,6 +38,9 @@ let video;
 let poseNet;
 let pose;
 
+function preload() {
+  img1 = loadImage('NYC1.jpg');
+}
 function setup() {
   
   createCanvas(windowWidth, windowHeight);
@@ -55,9 +58,9 @@ function setup() {
 
 function draw() {
   
-   background(150);
-   image(video,0,0);
-   tint(25,20,15,30);
+   background(img1);
+   image(video);
+   tint(50,50,50,50);
    filter(GRAY);
    
     //colors for posenet motion

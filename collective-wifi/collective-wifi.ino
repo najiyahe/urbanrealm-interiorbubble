@@ -79,7 +79,6 @@ void onLeft(OSCMessage& msg) {
 
   // Left X will change position, Left Y will change hue
     int whichLed = round(x * (NUM_LEDS -1));
- // int whichLed = round(x * ((NUM_LEDS/2 -1))+30;
   int newHue = round(y * 255);
 
   leds[whichLed].setHue(newHue);
@@ -88,10 +87,10 @@ void onLeft(OSCMessage& msg) {
 
 
 void onToggle(OSCMessage& msg) {
-  // Reset everything to red when the button is pressed
+  // Reset everything to white when the button is pressed
   if (msg.getFloat(0) == 1.0) {
     for (int i = 0; i < NUM_LEDS; i++) {
-      leds[i] = CRGB::Red;
+      leds[i] = CRGB::White;
     }
   }
 }
