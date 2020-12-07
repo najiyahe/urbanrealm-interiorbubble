@@ -72,13 +72,13 @@ function draw() {
     
     // Left Wrist movement (moving the Particle System origin)
      let leftWrist = pose['leftWrist'];
-  ps.origin.set(pose.leftWrist.x, pose.leftWrist.y-100, 0);
+  ps.origin.set(pose.leftWrist.x+150, pose.leftWrist.y-75, 0);
   ps.addParticle();
   ps.run();
    
     // Right Wrist movement (moving the Particle System origin)
      let rightWrist = pose['rightWrist'];
-  ps.origin.set(pose.rightWrist.x, (pose.rightWrist.y-100), 0);
+  ps.origin.set(pose.rightWrist.x+150, (pose.rightWrist.y-75), 0);
   ps.addParticle();
   ps.run();
 
@@ -93,9 +93,9 @@ function draw() {
 
 function mapParticles(pose){
 
- const newrightX = map (pose.rightWrist.x, 0, width, 0, 1, true);
+ const newrightX = map (pose.rightWrist.x, 0, (width), 0, 1, true);
  const newrightY = map (pose.rightWrist.y, 0, height, 0, 1, true);
- const newleftX = map (pose.leftWrist.x, 0, width, 0, 1, true);
+ const newleftX = map (pose.leftWrist.x, 0, (width), 0, 1, true);
  const newleftY = map (pose.leftWrist.y, 0, height, 0, 1, true);
 
   socket.send({ address: '/3/xy', args: [newrightX, newrightY] })

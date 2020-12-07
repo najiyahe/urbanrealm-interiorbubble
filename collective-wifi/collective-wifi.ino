@@ -67,7 +67,7 @@ void onRight(OSCMessage& msg) {
   float y = msg.getFloat(1);
 
   // Right X will change position, Right Y will change hue
-  int whichLed = round(x * (NUM_LEDS -1));
+  int whichLed = round(x* 2* (NUM_LEDS -1));
   int newHue = round(y * 255);
 
   leds[whichLed].setHue(newHue);
@@ -78,7 +78,7 @@ void onLeft(OSCMessage& msg) {
   float y = msg.getFloat(1);
 
   // Left X will change position, Left Y will change hue
-    int whichLed = round(x * (NUM_LEDS -1));
+    int whichLed = round(x * 2* (NUM_LEDS -1));
   int newHue = round(y * 255);
 
   leds[whichLed].setHue(newHue);
