@@ -72,13 +72,13 @@ function draw() {
     
     // Left Wrist movement (moving the Particle System origin)
      let leftWrist = pose['leftWrist'];
-  ps.origin.set(pose.leftWrist.x+150, pose.leftWrist.y-75, 0);
+  ps.origin.set(pose.leftWrist.x+250, pose.leftWrist.y-75, 0);
   ps.addParticle();
   ps.run();
    
     // Right Wrist movement (moving the Particle System origin)
      let rightWrist = pose['rightWrist'];
-  ps.origin.set(pose.rightWrist.x+150, (pose.rightWrist.y-75), 0);
+  ps.origin.set(pose.rightWrist.x+250, (pose.rightWrist.y-75), 0);
   ps.addParticle();
   ps.run();
 
