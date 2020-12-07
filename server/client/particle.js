@@ -1,7 +1,5 @@
-// Particle Class
-// The Nature of Code
-// Daniel Shiffman
-// http://natureofcode.com
+// Particle Class, Daniel Shiffman
+// The Nature of Code, http://natureofcode.com
 
 
 class Particle {

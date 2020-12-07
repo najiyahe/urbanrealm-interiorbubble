@@ -1,3 +1,7 @@
+//Ml5js, Posenet
+//The coding train, Daniel Shiffman
+
+
 function gotPoses(poses){
   //record a pose each time a pose is recorded
   //console.log(poses);

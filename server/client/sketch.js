@@ -1,3 +1,9 @@
+//Ml5.js based on The Coding Train, Daniel Shiffman
+//Particle System, The nature of code, Daniel Shiffman
+//JS to OSC/Websocket/ Ino code by Michael Meiser
+//Public Domain Photos from Piqsels
+//Project by Najiyah Edun
+
 // Change this to the domain name of your Heroku server
 const SERVER_URL = 'wss://radiant-chamber-34629.herokuapp.com'
 
@@ -78,14 +84,13 @@ function draw() {
    
     // Right Wrist movement (moving the Particle System origin)
      let rightWrist = pose['rightWrist'];
-  ps.origin.set(pose.rightWrist.x+250, (pose.rightWrist.y-75), 0);
+  ps.origin.set(pose.rightWrist.x+250, (pose.rightWrist.y-100), 0);
   ps.addParticle();
   ps.run();
 
   // Map location of particles via OSC to Arduino
   mapParticles(pose);
 }
-
 }
 
   // /////////////////////// Map to OSC//////////////////////////////////////////////////////////////////////
@@ -93,9 +98,9 @@ function draw() {
 
 function mapParticles(pose){
 
- const newrightX = map (pose.rightWrist.x, 0, (width), 0, 1, true);
+ const newrightX = map (pose.rightWrist.x, 0, (3*width), 0, 1, true);
  const newrightY = map (pose.rightWrist.y, 0, height, 0, 1, true);
- const newleftX = map (pose.leftWrist.x, 0, (width), 0, 1, true);
+ const newleftX = map (pose.leftWrist.x, 0, (3*width), 0, 1, true);
  const newleftY = map (pose.leftWrist.y, 0, height, 0, 1, true);
 
   socket.send({ address: '/3/xy', args: [newrightX, newrightY] })
