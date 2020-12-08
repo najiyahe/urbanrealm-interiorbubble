@@ -53,7 +53,7 @@ function setup() {
   colorMode(HSB);
 
   // initiate particle system
-  ps = new ParticleSystem(createVector(width/2, height/2));
+  ps = new ParticleSystem(createVector(width, height));
 
   //ml5 video
   video = createCapture(VIDEO);
